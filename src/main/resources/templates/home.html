@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="hero">
+        <div class="hero-text">
+            <p class="eyebrow">Spring Boot Resume Portfolio</p>
+            <h1>개인 이력서 및 포트폴리오 관리 웹사이트</h1>
+            <p class="hero-description">
+                Spring Boot MVC 구조를 기반으로 프로필, 이력서, 기술스택, 프로젝트,
+                자격증 정보를 관리하고 보여주는 웹 애플리케이션입니다.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn primary" th:href="@{/projects}">프로젝트 보기</a>
+                <a class="btn secondary" th:href="@{/resume}">이력서 보기</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <h2>구현 예정 기능</h2>
+            <ul>
+                <li>프로필 및 이력서 페이지</li>
+                <li>프로젝트 목록/상세 페이지</li>
+                <li>자격증 이미지 업로드</li>
+                <li>관리자 등록/수정/삭제</li>
+                <li>유효성 검사</li>
+                <li>REST API</li>
+                <li>예외 처리 및 로그 기록</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="feature-grid">
+        <article class="feature-card">
+            <h3>Spring MVC</h3>
+            <p>Controller, Model, View 구조로 페이지 요청을 처리합니다.</p>
+        </article>
+
+        <article class="feature-card">
+            <h3>Thymeleaf</h3>
+            <p>서버에서 전달한 데이터를 HTML 화면에 출력합니다.</p>
+        </article>
+
+        <article class="feature-card">
+            <h3>Validation</h3>
+            <p>프로젝트와 자격증 등록 폼의 입력값을 검증합니다.</p>
+        </article>
+
+        <article class="feature-card">
+            <h3>Security</h3>
+            <p>관리자 페이지 접근을 로그인 기반으로 제한합니다.</p>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>
