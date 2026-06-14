@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificates | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Certificates</p>
+        <h1>자격증 및 수료 내역</h1>
+        <p>
+            자격증, 교육 수료, 학습 이력을 관리하고 표시하는 페이지입니다.
+        </p>
+    </section>
+
+    <section class="toolbar">
+        <p class="subtle-text">관리자 페이지에서 자격증 이미지를 등록할 예정입니다.</p>
+        <a class="btn primary" th:href="@{/admin/certificates/add}">자격증 등록</a>
+    </section>
+
+    <section class="content-grid three-columns">
+        <article class="content-card certificate-card">
+            <p class="card-label">Certificate</p>
+            <h2>자격증명 입력 예정</h2>
+            <p>발급기관: 입력 예정</p>
+            <p>취득일: 입력 예정</p>
+        </article>
+
+        <article class="content-card certificate-card">
+            <p class="card-label">Training</p>
+            <h2>교육 수료 내역 입력 예정</h2>
+            <p>기관: 입력 예정</p>
+            <p>수료일: 입력 예정</p>
+        </article>
+
+        <article class="content-card certificate-card">
+            <p class="card-label">Activity</p>
+            <h2>활동 내역 입력 예정</h2>
+            <p>기관: 입력 예정</p>
+            <p>기간: 입력 예정</p>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Resume</p>
+        <h1>이력서</h1>
+        <p>
+            학력, 활동, 보유 역량, 프로젝트 경험을 정리하는 페이지입니다.
+        </p>
+    </section>
+
+    <section class="timeline">
+        <article class="timeline-item">
+            <span class="timeline-date">현재</span>
+            <div class="timeline-body">
+                <h2>Spring Boot 기말과제 진행</h2>
+                <p>
+                    개인 이력서 및 포트폴리오 관리 웹사이트를 Spring Boot MVC 구조로 구현하고 있습니다.
+                </p>
+            </div>
+        </article>
+
+        <article class="timeline-item">
+            <span class="timeline-date">1학년</span>
+            <div class="timeline-body">
+                <h2>개인 홈페이지 제작 경험</h2>
+                <p>
+                    기존 정적 홈페이지 성격의 결과물을 Spring Boot 프레임워크 기반 웹 애플리케이션으로 재구성합니다.
+                </p>
+            </div>
+        </article>
+
+        <article class="timeline-item">
+            <span class="timeline-date">관심</span>
+            <div class="timeline-body">
+                <h2>IoT 및 임베디드 시스템 개발</h2>
+                <p>
+                    하드웨어 제어, 센서 데이터 처리, 서버 연동, 웹 대시보드 구축에 관심을 가지고 있습니다.
+                </p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Admin</p>
+        <h1>관리자 페이지</h1>
+        <p>
+            프로필, 프로젝트, 자격증, 기술스택 정보를 등록하고 수정하는 관리 영역입니다.
+        </p>
+    </section>
+
+    <section class="content-grid two-columns">
+        <article class="content-card admin-card">
+            <h2>프로젝트 관리</h2>
+            <p>프로젝트 등록, 수정, 삭제 기능을 구현할 예정입니다.</p>
+            <a class="btn secondary" th:href="@{/admin/projects/add}">프로젝트 등록</a>
+        </article>
+
+        <article class="content-card admin-card">
+            <h2>자격증 관리</h2>
+            <p>자격증 정보와 이미지를 등록하는 기능을 구현할 예정입니다.</p>
+            <a class="btn secondary" th:href="@{/admin/certificates/add}">자격증 등록</a>
+        </article>
+
+        <article class="content-card admin-card">
+            <h2>프로필 관리</h2>
+            <p>이름, 소개, 이메일, 프로필 이미지를 수정하는 기능을 구현할 예정입니다.</p>
+            <a class="btn secondary" th:href="@{/admin/profile/edit}">프로필 수정</a>
+        </article>
+
+        <article class="content-card admin-card">
+            <h2>기술스택 관리</h2>
+            <p>기술명, 카테고리, 숙련도 정보를 등록하는 기능을 구현할 예정입니다.</p>
+            <a class="btn secondary" th:href="@{/admin/skills/add}">기술 등록</a>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

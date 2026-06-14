@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Skills | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Skills</p>
+        <h1>기술스택</h1>
+        <p>
+            웹, 서버, 데이터베이스, 임베디드 및 IoT 관련 기술을 분류하여 표시합니다.
+        </p>
+    </section>
+
+    <section class="content-grid">
+        <article class="content-card">
+            <h2>Backend</h2>
+            <ul class="tag-list">
+                <li>Java</li>
+                <li>Spring Boot</li>
+                <li>Spring MVC</li>
+                <li>REST API</li>
+            </ul>
+        </article>
+
+        <article class="content-card">
+            <h2>Frontend</h2>
+            <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Thymeleaf</li>
+                <li>JavaScript</li>
+            </ul>
+        </article>
+
+        <article class="content-card">
+            <h2>Database</h2>
+            <ul class="tag-list">
+                <li>PostgreSQL</li>
+                <li>SQL</li>
+                <li>Memory Repository</li>
+            </ul>
+        </article>
+
+        <article class="content-card">
+            <h2>Embedded / IoT</h2>
+            <ul class="tag-list">
+                <li>Microcontroller</li>
+                <li>Sensor</li>
+                <li>Actuator</li>
+                <li>Communication</li>
+            </ul>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

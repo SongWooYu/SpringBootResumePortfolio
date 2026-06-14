@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Profile</p>
+        <h1>프로필</h1>
+        <p>
+            개인 기본 정보와 개발 관심 분야를 소개하는 페이지입니다.
+        </p>
+    </section>
+
+    <section class="content-grid two-columns">
+        <article class="content-card">
+            <h2>기본 정보</h2>
+            <dl class="info-list">
+                <dt>이름</dt>
+                <dd>송우</dd>
+
+                <dt>학과</dt>
+                <dd>학과명 입력 예정</dd>
+
+                <dt>학년</dt>
+                <dd>학년 입력 예정</dd>
+
+                <dt>이메일</dt>
+                <dd>songwooyu@gmail.com</dd>
+
+                <dt>도메인</dt>
+                <dd>songwoo.pile.kr</dd>
+            </dl>
+        </article>
+
+        <article class="content-card">
+            <h2>관심 분야</h2>
+            <ul class="check-list">
+                <li>Java 및 Spring Boot 기반 웹 애플리케이션</li>
+                <li>임베디드 시스템 및 IoT 장치 개발</li>
+                <li>센서 데이터 수집 및 모니터링 시스템</li>
+                <li>서버, 데이터베이스, 클라우드 연동</li>
+                <li>제품 기획 및 서비스 운영</li>
+            </ul>
+        </article>
+    </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>
