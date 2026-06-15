@@ -9,7 +9,7 @@
 
 <div th:replace="~{module/header :: header}"></div>
 
-<main class="container">
+<main class="container certificate-page">
     <div class="flash-message" th:if="${message}" th:text="${message}">
         처리되었습니다.
     </div>
@@ -19,11 +19,18 @@
         <h1>자격증 및 수료 내역</h1>
         <p>
             자격증, 교육 수료, 활동 증빙 이미지를 관리하고 표시하는 페이지입니다.
+            마스킹된 증빙 이미지를 함께 제공하여 포트폴리오의 신뢰성을 높입니다.
         </p>
     </section>
 
-    <section class="toolbar">
-        <p class="subtle-text">마스킹된 자격증 이미지와 자격 취득 정보를 표시합니다.</p>
+    <section class="certificate-toolbar">
+        <div>
+            <strong>보유 자격 및 증빙 자료</strong>
+            <p>
+                기본 자격증 이미지는 정적 리소스로 제공하고, 추가 자격증은 관리자 페이지에서 업로드합니다.
+            </p>
+        </div>
+
         <a class="btn primary" th:href="@{/admin/certificates/add}">자격증 등록</a>
     </section>
 
@@ -32,37 +39,43 @@
         <p>관리자 페이지에서 자격증 정보를 등록하십시오.</p>
     </section>
 
-    <section class="content-grid two-columns" th:if="${!#lists.isEmpty(certificates)}">
-        <article class="content-card certificate-card" th:each="certificate : ${certificates}">
-            <div class="certificate-image-wrap"
-                 th:if="${certificate.imagePath != null and !#strings.isEmpty(certificate.imagePath)}">
-                <img class="certificate-image"
-                     th:src="@{${certificate.imagePath}}"
+    <section class="certificate-gallery" th:if="${!#lists.isEmpty(certificates)}">
+        <article class="certificate-item" th:each="certificate : ${certificates}">
+            <a class="certificate-preview"
+               th:if="${certificate.imagePath != null and !#strings.isEmpty(certificate.imagePath)}"
+               th:href="@{${certificate.imagePath}}"
+               target="_blank"
+               title="이미지 원본 보기">
+                <img th:src="@{${certificate.imagePath}}"
                      th:alt="${certificate.name}">
-            </div>
+            </a>
 
-            <div class="certificate-image-placeholder"
+            <div class="certificate-preview certificate-preview-empty"
                  th:if="${certificate.imagePath == null or #strings.isEmpty(certificate.imagePath)}">
                 No Image
             </div>
 
-            <p class="card-label" th:text="${certificate.certificateId}">CERT001</p>
+            <div class="certificate-meta">
+                <p class="certificate-id" th:text="${certificate.certificateId}">CERT001</p>
 
-            <h2 th:text="${certificate.name}">자격증명</h2>
+                <h2 th:text="${certificate.name}">자격증명</h2>
 
-            <p>
-                발급기관:
-                <span th:text="${certificate.issuer}">발급기관</span>
-            </p>
+                <dl>
+                    <div>
+                        <dt>발급기관</dt>
+                        <dd th:text="${certificate.issuer}">발급기관</dd>
+                    </div>
 
-            <p>
-                취득일:
-                <span th:text="${certificate.acquiredDate}">취득일</span>
-            </p>
+                    <div>
+                        <dt>취득일</dt>
+                        <dd th:text="${certificate.acquiredDate}">취득일</dd>
+                    </div>
+                </dl>
 
-            <p th:text="${certificate.description}">
-                설명
-            </p>
+                <p class="certificate-desc" th:text="${certificate.description}">
+                    설명
+                </p>
+            </div>
         </article>
     </section>
 </main>

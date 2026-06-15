@@ -11,8 +11,9 @@
 
 <main class="container">
   <div class="flash-message" th:if="${message}" th:text="${message}">
-    프로젝트가 등록되었습니다.
+    처리되었습니다.
   </div>
+
   <section class="page-header">
     <p class="eyebrow" th:text="${project.category}">Project</p>
     <h1 th:text="${project.title}">프로젝트명</h1>
@@ -79,18 +80,6 @@
               onsubmit="return confirm('정말 삭제하시겠습니까? 삭제 후에는 목록으로 이동합니다.');">
           <button type="submit" class="btn danger">프로젝트 삭제</button>
         </form>
-
-        <a class="btn secondary" th:href="@{/projects}">
-          목록으로
-        </a>
-      </div>
-
-        <a class="btn secondary"
-           th:if="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}"
-           th:href="${project.demoUrl}"
-           target="_blank">
-          실행 화면 보기
-        </a>
 
         <a class="btn secondary" th:href="@{/projects}">
           목록으로
