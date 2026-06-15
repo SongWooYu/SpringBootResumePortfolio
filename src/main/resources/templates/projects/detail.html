@@ -10,6 +10,9 @@
 <div th:replace="~{module/header :: header}"></div>
 
 <main class="container">
+  <div class="flash-message" th:if="${message}" th:text="${message}">
+    프로젝트가 등록되었습니다.
+  </div>
   <section class="page-header">
     <p class="eyebrow" th:text="${project.category}">Project</p>
     <h1 th:text="${project.title}">프로젝트명</h1>
