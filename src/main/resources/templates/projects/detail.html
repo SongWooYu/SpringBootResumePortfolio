@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${project.title + ' | SongWoo Portfolio'}">Project Detail</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+  <section class="page-header">
+    <p class="eyebrow" th:text="${project.category}">Project</p>
+    <h1 th:text="${project.title}">프로젝트명</h1>
+    <p th:text="${project.summary}">
+      프로젝트 요약
+    </p>
+  </section>
+
+  <section class="detail-layout">
+    <article class="content-card detail-main">
+      <h2>프로젝트 설명</h2>
+      <p th:text="${project.description}">
+        프로젝트 상세 설명
+      </p>
+
+      <h2>사용 기술</h2>
+      <p th:text="${project.techStack}">
+        Java, Spring Boot
+      </p>
+
+      <h2>담당 역할</h2>
+      <p th:text="${project.role}">
+        기획, 설계, 구현
+      </p>
+    </article>
+
+    <aside class="content-card detail-side">
+      <h2>프로젝트 정보</h2>
+
+      <dl class="info-list vertical">
+        <dt>프로젝트 ID</dt>
+        <dd th:text="${project.projectId}">PJT001</dd>
+
+        <dt>분류</dt>
+        <dd th:text="${project.category}">Spring Boot</dd>
+
+        <dt>기술스택</dt>
+        <dd th:text="${project.techStack}">Java, Spring Boot</dd>
+      </dl>
+
+      <div class="detail-actions">
+        <a class="btn primary"
+           th:if="${project.githubUrl != null and !#strings.isEmpty(project.githubUrl)}"
+           th:href="${project.githubUrl}"
+           target="_blank">
+          GitHub 보기
+        </a>
+
+        <a class="btn secondary"
+           th:if="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}"
+           th:href="${project.demoUrl}"
+           target="_blank">
+          실행 화면 보기
+        </a>
+
+        <a class="btn secondary" th:href="@{/projects}">
+          목록으로
+        </a>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

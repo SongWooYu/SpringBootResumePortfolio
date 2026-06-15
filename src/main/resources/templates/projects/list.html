@@ -20,39 +20,54 @@
 
     <section class="toolbar">
         <form class="search-form" method="get" th:action="@{/projects}">
-            <input type="text" name="keyword" placeholder="프로젝트명 또는 기술 검색">
+            <input type="text"
+                   name="keyword"
+                   placeholder="프로젝트명 또는 기술 검색"
+                   th:value="${keyword}">
             <button type="submit">검색</button>
         </form>
 
         <a class="btn primary" th:href="@{/admin/projects/add}">프로젝트 등록</a>
     </section>
 
-    <section class="content-grid three-columns">
-        <article class="content-card project-card">
-            <p class="card-label">Spring Boot</p>
-            <h2>개인 이력서 및 포트폴리오 웹사이트</h2>
-            <p>
-                Spring Boot MVC 구조를 활용하여 개인 이력서, 프로젝트, 자격증 정보를 관리하는 웹 애플리케이션입니다.
-            </p>
-            <a class="text-link" th:href="@{/projects/PJT001}">상세 보기</a>
-        </article>
+    <section class="result-summary">
+        <p th:if="${keyword == null or #strings.isEmpty(keyword)}">
+            전체 프로젝트
+            <strong th:text="${projectCount}">0</strong>개를 표시합니다.
+        </p>
 
-        <article class="content-card project-card">
-            <p class="card-label">Web Practice</p>
-            <h2>도서 쇼핑몰 실습 변형</h2>
-            <p>
-                수업에서 학습한 도서 쇼핑몰 구조를 개인 포트폴리오 관리 구조로 변환한 프로젝트입니다.
-            </p>
-            <a class="text-link" th:href="@{/projects/PJT002}">상세 보기</a>
-        </article>
+        <p th:if="${keyword != null and !#strings.isEmpty(keyword)}">
+            검색어
+            <strong th:text="${keyword}">keyword</strong>
+            에 대한 결과
+            <strong th:text="${projectCount}">0</strong>개를 표시합니다.
+            <a class="text-link" th:href="@{/projects}">전체 목록 보기</a>
+        </p>
+    </section>
 
-        <article class="content-card project-card">
-            <p class="card-label">IoT</p>
-            <h2>IoT 센서 모니터링 시스템</h2>
-            <p>
-                센서 데이터를 수집하고 서버와 연동하여 상태를 확인하는 시스템을 목표로 한 프로젝트입니다.
+    <section class="empty-state" th:if="${#lists.isEmpty(projects)}">
+        <h2>검색 결과가 없습니다.</h2>
+        <p>다른 키워드로 다시 검색하십시오.</p>
+    </section>
+
+    <section class="content-grid three-columns" th:if="${!#lists.isEmpty(projects)}">
+        <article class="content-card project-card" th:each="project : ${projects}">
+            <p class="card-label" th:text="${project.category}">Spring Boot</p>
+
+            <h2 th:text="${project.title}">프로젝트명</h2>
+
+            <p th:text="${project.summary}">
+                프로젝트 요약
             </p>
-            <a class="text-link" th:href="@{/projects/PJT003}">상세 보기</a>
+
+            <p class="subtle-text" th:text="${project.techStack}">
+                Java, Spring Boot
+            </p>
+
+            <a class="text-link"
+               th:href="@{/projects/{projectId}(projectId=${project.projectId})}">
+                상세 보기
+            </a>
         </article>
     </section>
 </main>

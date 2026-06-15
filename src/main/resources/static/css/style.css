@@ -400,5 +400,101 @@ a {
         .search-form input {
             max-width: none;
         }
+
+        .result-summary {
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            color: #4b5563;
+        }
+
+        .result-summary p {
+            margin: 0;
+        }
+
+        .result-summary strong {
+            color: #111827;
+        }
+
+        .empty-state {
+            padding: 48px;
+            text-align: center;
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 18px;
+            color: #4b5563;
+        }
+
+        .empty-state h2 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 0.9fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .detail-main h2 {
+            margin-top: 32px;
+        }
+
+        .detail-main h2:first-child {
+            margin-top: 0;
+        }
+
+        .detail-main p {
+            line-height: 1.8;
+        }
+
+        .detail-side {
+            position: sticky;
+            top: 24px;
+        }
+
+        .info-list.vertical {
+            display: block;
+        }
+
+        .info-list.vertical dt {
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+
+        .info-list.vertical dt:first-child {
+            margin-top: 0;
+        }
+
+        .info-list.vertical dd {
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .detail-actions {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .detail-actions .btn {
+            justify-content: center;
+        }
+
+        @media (max-width: 900px) {
+            .detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-side {
+                position: static;
+            }
+        }
+
+
     }
 }
