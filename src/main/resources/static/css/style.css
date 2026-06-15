@@ -582,6 +582,36 @@ a {
         .btn.danger:hover {
             background: #b91c1c;
         }
+        .certificate-image-wrap {
+            width: 100%;
+            height: 180px;
+            margin-bottom: 18px;
+            overflow: hidden;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .certificate-image-placeholder {
+            width: 100%;
+            height: 180px;
+            margin-bottom: 18px;
+            border-radius: 14px;
+            border: 1px dashed #cbd5e1;
+            background: #f8fafc;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
 
 
     }

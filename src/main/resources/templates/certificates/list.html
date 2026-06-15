@@ -10,39 +10,59 @@
 <div th:replace="~{module/header :: header}"></div>
 
 <main class="container">
+    <div class="flash-message" th:if="${message}" th:text="${message}">
+        처리되었습니다.
+    </div>
+
     <section class="page-header">
         <p class="eyebrow">Certificates</p>
         <h1>자격증 및 수료 내역</h1>
         <p>
-            자격증, 교육 수료, 학습 이력을 관리하고 표시하는 페이지입니다.
+            자격증, 교육 수료, 활동 증빙 이미지를 관리하고 표시하는 페이지입니다.
         </p>
     </section>
 
     <section class="toolbar">
-        <p class="subtle-text">관리자 페이지에서 자격증 이미지를 등록할 예정입니다.</p>
+        <p class="subtle-text">관리자 페이지에서 자격증 이미지와 정보를 등록할 수 있습니다.</p>
         <a class="btn primary" th:href="@{/admin/certificates/add}">자격증 등록</a>
     </section>
 
-    <section class="content-grid three-columns">
-        <article class="content-card certificate-card">
-            <p class="card-label">Certificate</p>
-            <h2>자격증명 입력 예정</h2>
-            <p>발급기관: 입력 예정</p>
-            <p>취득일: 입력 예정</p>
-        </article>
+    <section class="empty-state" th:if="${#lists.isEmpty(certificates)}">
+        <h2>등록된 자격증이 없습니다.</h2>
+        <p>관리자 페이지에서 자격증 정보를 등록하십시오.</p>
+    </section>
 
-        <article class="content-card certificate-card">
-            <p class="card-label">Training</p>
-            <h2>교육 수료 내역 입력 예정</h2>
-            <p>기관: 입력 예정</p>
-            <p>수료일: 입력 예정</p>
-        </article>
+    <section class="content-grid three-columns" th:if="${!#lists.isEmpty(certificates)}">
+        <article class="content-card certificate-card" th:each="certificate : ${certificates}">
+            <div class="certificate-image-wrap"
+                 th:if="${certificate.imageFileName != null and !#strings.isEmpty(certificate.imageFileName)}">
+                <img class="certificate-image"
+                     th:src="@{/files/certificates/{fileName}(fileName=${certificate.imageFileName})}"
+                     th:alt="${certificate.name}">
+            </div>
 
-        <article class="content-card certificate-card">
-            <p class="card-label">Activity</p>
-            <h2>활동 내역 입력 예정</h2>
-            <p>기관: 입력 예정</p>
-            <p>기간: 입력 예정</p>
+            <div class="certificate-image-placeholder"
+                 th:if="${certificate.imageFileName == null or #strings.isEmpty(certificate.imageFileName)}">
+                No Image
+            </div>
+
+            <p class="card-label" th:text="${certificate.certificateId}">CERT001</p>
+
+            <h2 th:text="${certificate.name}">자격증명</h2>
+
+            <p>
+                발급기관:
+                <span th:text="${certificate.issuer}">발급기관</span>
+            </p>
+
+            <p>
+                취득일:
+                <span th:text="${certificate.acquiredDate}">취득일</span>
+            </p>
+
+            <p th:text="${certificate.description}">
+                설명
+            </p>
         </article>
     </section>
 </main>
