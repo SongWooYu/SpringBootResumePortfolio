@@ -30,8 +30,11 @@ public class CertificateService {
             certificate.setCertificateId(generateNextCertificateId());
         }
 
-        String imageFileName = fileStoreService.storeCertificateImage(imageFile);
-        certificate.setImageFileName(imageFileName);
+        String uploadedImagePath = fileStoreService.storeCertificateImage(imageFile);
+
+        if (!uploadedImagePath.isBlank()) {
+            certificate.setImagePath(uploadedImagePath);
+        }
 
         return certificateRepository.save(certificate);
     }

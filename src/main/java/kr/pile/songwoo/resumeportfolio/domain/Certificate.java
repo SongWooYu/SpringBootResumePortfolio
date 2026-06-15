@@ -18,5 +18,5 @@ public class Certificate {
     private String issuer;
     private String acquiredDate;
     private String description;
-    private String imageFileName;
+    private String imagePath;
 }

@@ -35,7 +35,7 @@ public class FileStoreService {
             Path targetPath = certificateDir.resolve(storedFileName).normalize();
             file.transferTo(targetPath);
 
-            return storedFileName;
+            return "/files/certificates/" + storedFileName;
         } catch (IOException e) {
             throw new IllegalStateException("자격증 이미지 저장 중 오류가 발생했습니다.", e);
         }
