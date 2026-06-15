@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>프로젝트 수정 | SongWoo Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container">
+    <section class="page-header">
+        <p class="eyebrow">Admin</p>
+        <h1>프로젝트 수정</h1>
+        <p>
+            등록된 프로젝트 정보를 수정합니다.
+        </p>
+    </section>
+
+    <form class="form-card"
+          method="post"
+          th:action="@{/admin/projects/{projectId}/edit(projectId=${project.projectId})}"
+          th:object="${project}">
+
+        <div class="form-field">
+            <label for="projectId">프로젝트 ID</label>
+            <input type="text" id="projectId" th:field="*{projectId}" readonly>
+            <p class="field-help">프로젝트 ID는 수정할 수 없습니다.</p>
+        </div>
+
+        <div class="form-field">
+            <label for="title">프로젝트명</label>
+            <input type="text" id="title" th:field="*{title}">
+        </div>
+
+        <div class="form-field">
+            <label for="category">분류</label>
+            <input type="text" id="category" th:field="*{category}">
+        </div>
+
+        <div class="form-field">
+            <label for="summary">요약</label>
+            <input type="text" id="summary" th:field="*{summary}">
+        </div>
+
+        <div class="form-field">
+            <label for="description">상세 설명</label>
+            <textarea id="description" th:field="*{description}" rows="6"></textarea>
+        </div>
+
+        <div class="form-field">
+            <label for="techStack">사용 기술</label>
+            <input type="text" id="techStack" th:field="*{techStack}">
+        </div>
+
+        <div class="form-field">
+            <label for="role">담당 역할</label>
+            <input type="text" id="role" th:field="*{role}">
+        </div>
+
+        <div class="form-field">
+            <label for="githubUrl">GitHub URL</label>
+            <input type="text" id="githubUrl" th:field="*{githubUrl}">
+        </div>
+
+        <div class="form-field">
+            <label for="demoUrl">Demo URL</label>
+            <input type="text" id="demoUrl" th:field="*{demoUrl}">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn primary">수정 완료</button>
+            <a class="btn secondary"
+               th:href="@{/projects/{projectId}(projectId=${project.projectId})}">
+                상세 페이지
+            </a>
+            <a class="btn secondary" th:href="@{/projects}">목록으로</a>
+        </div>
+    </form>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

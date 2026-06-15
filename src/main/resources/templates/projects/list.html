@@ -10,6 +10,11 @@
 <div th:replace="~{module/header :: header}"></div>
 
 <main class="container">
+    <div class="flash-message" th:if="${message}" th:text="${message}">
+        처리되었습니다.
+    </div>
+
+    <section class="page-header">
     <section class="page-header">
         <p class="eyebrow">Projects</p>
         <h1>프로젝트 목록</h1>
