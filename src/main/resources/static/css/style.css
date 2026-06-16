@@ -929,4 +929,27 @@ img {
             align-items: stretch;
         }
     }
+    /* ================================
+   Header auth menu
+   ================================ */
+
+    .nav-logout-form {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .nav-logout-button {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #d1d5db;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .nav-logout-button:hover {
+        color: #ffffff;
+    }
 }
