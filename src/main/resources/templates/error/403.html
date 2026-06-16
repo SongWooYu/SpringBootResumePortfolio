@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>403 | SongWoo Portfolio</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container error-page">
+  <section class="error-card">
+    <p class="error-code">403</p>
+
+    <h1>접근 권한이 없습니다.</h1>
+
+    <p>
+      관리자 권한이 필요한 페이지입니다.
+      로그인 상태나 접근 권한을 확인하십시오.
+    </p>
+
+    <div class="error-actions">
+      <a class="btn primary" th:href="@{/login}">
+        로그인 페이지
+      </a>
+
+      <a class="btn secondary" th:href="@{/}">
+        홈으로
+      </a>
+    </div>
+  </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

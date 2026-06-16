@@ -1,6 +1,7 @@
 package kr.pile.songwoo.resumeportfolio.service;
 
 import kr.pile.songwoo.resumeportfolio.domain.Certificate;
+import kr.pile.songwoo.resumeportfolio.exception.CertificateNotFoundException;
 import kr.pile.songwoo.resumeportfolio.repository.CertificateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class CertificateService {
 
     public Certificate findById(String certificateId) {
         return certificateRepository.findById(certificateId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 자격증입니다. certificateId=" + certificateId));
+                .orElseThrow(() -> new CertificateNotFoundException(certificateId));
     }
 
     public Certificate create(Certificate certificate, MultipartFile imageFile) {

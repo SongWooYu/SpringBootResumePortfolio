@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>500 | SongWoo Portfolio</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container error-page">
+  <section class="error-card">
+    <p class="error-code">500</p>
+
+    <h1>서버 처리 중 오류가 발생했습니다.</h1>
+
+    <p>
+      요청을 처리하는 중 예상하지 못한 오류가 발생했습니다.
+      잠시 후 다시 시도하거나 다른 페이지로 이동하십시오.
+    </p>
+
+    <div class="error-actions">
+      <a class="btn primary" th:href="@{/}">
+        홈으로
+      </a>
+
+      <a class="btn secondary" th:href="@{/projects}">
+        프로젝트 목록
+      </a>
+    </div>
+  </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

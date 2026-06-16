@@ -1,6 +1,7 @@
 package kr.pile.songwoo.resumeportfolio.service;
 
 import kr.pile.songwoo.resumeportfolio.domain.Project;
+import kr.pile.songwoo.resumeportfolio.exception.ProjectNotFoundException;
 import kr.pile.songwoo.resumeportfolio.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class ProjectService {
 
     public Project findById(String projectId) {
         return projectRepository.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 프로젝트입니다. projectId=" + projectId));
+                .orElseThrow(() -> new ProjectNotFoundException(projectId));
     }
 
     public Project create(Project project) {

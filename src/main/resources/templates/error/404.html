@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>404 | SongWoo Portfolio</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{module/header :: header}"></div>
+
+<main class="container error-page">
+  <section class="error-card">
+    <p class="error-code">404</p>
+
+    <h1 th:text="${errorTitle != null ? errorTitle : '페이지를 찾을 수 없습니다.'}">
+      페이지를 찾을 수 없습니다.
+    </h1>
+
+    <p th:text="${errorMessage != null ? errorMessage : '요청하신 주소가 없거나 삭제된 페이지입니다.'}">
+      요청하신 주소가 없거나 삭제된 페이지입니다.
+    </p>
+
+    <div class="error-actions">
+      <a class="btn primary"
+         th:if="${backUrl != null}"
+         th:href="@{${backUrl}}"
+         th:text="${backLabel != null ? backLabel : '이전 목록으로'}">
+        이전 목록으로
+      </a>
+
+      <a class="btn primary"
+         th:if="${backUrl == null}"
+         th:href="@{/}">
+        홈으로
+      </a>
+
+      <a class="btn secondary" th:href="@{/projects}">
+        프로젝트 목록
+      </a>
+    </div>
+  </section>
+</main>
+
+<div th:replace="~{module/footer :: footer}"></div>
+
+</body>
+</html>

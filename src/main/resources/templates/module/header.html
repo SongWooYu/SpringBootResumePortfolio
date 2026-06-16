@@ -11,9 +11,12 @@
       <a th:href="@{/certificates}">Certificates</a>
       <a th:href="@{/admin}">Admin</a>
 
-      <a th:if="${!isLoggedIn}" th:href="@{/login}">Login</a>
+      <a th:if="${isLoggedIn == null or !isLoggedIn}"
+         th:href="@{/login}">
+        Login
+      </a>
 
-      <form th:if="${isLoggedIn}"
+      <form th:if="${isLoggedIn != null and isLoggedIn}"
             class="nav-logout-form"
             method="post"
             th:action="@{/logout}">
