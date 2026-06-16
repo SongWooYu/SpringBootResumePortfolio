@@ -10,54 +10,148 @@
 <div th:replace="~{module/header :: header}"></div>
 
 <main class="container">
-    <section class="hero">
+    <section class="hero portfolio-hero">
         <div class="hero-text">
-            <p class="eyebrow">Spring Boot Resume Portfolio</p>
-            <h1>개인 이력서 및 포트폴리오 관리 웹사이트</h1>
+            <p class="eyebrow">Spring Boot Portfolio</p>
+            <h1>SongWoo의 이력서 및 포트폴리오</h1>
             <p class="hero-description">
-                Spring Boot MVC 구조를 기반으로 프로필, 이력서, 기술스택, 프로젝트,
-                자격증 정보를 관리하고 보여주는 웹 애플리케이션입니다.
+                기존 HTML 기반 개인 홈페이지를 Spring Boot MVC 구조로 재구성한 포트폴리오입니다.
+                프로필, 기술스택, 프로젝트, 자격증 정보를 한 곳에서 조회하고 관리자 화면에서 일부 데이터를 관리할 수 있습니다.
             </p>
 
             <div class="hero-actions">
                 <a class="btn primary" th:href="@{/projects}">프로젝트 보기</a>
                 <a class="btn secondary" th:href="@{/resume}">이력서 보기</a>
+                <a class="btn secondary" th:href="@{/certificates}">자격증 보기</a>
             </div>
         </div>
 
-        <div class="hero-card">
-            <h2>구현 예정 기능</h2>
-            <ul>
-                <li>프로필 및 이력서 페이지</li>
-                <li>프로젝트 목록/상세 페이지</li>
-                <li>자격증 이미지 업로드</li>
-                <li>관리자 등록/수정/삭제</li>
-                <li>유효성 검사</li>
-                <li>REST API</li>
-                <li>예외 처리 및 로그 기록</li>
-            </ul>
+        <div class="hero-card portfolio-summary">
+            <h2>Portfolio Summary</h2>
+
+            <div class="summary-list">
+                <div class="summary-item">
+                    <span>Projects</span>
+                    <strong th:text="${projectCount}">0</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Certificates</span>
+                    <strong th:text="${certificateCount}">0</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Skill Areas</span>
+                    <strong th:text="${skillCategoryCount}">0</strong>
+                </div>
+            </div>
+
+            <p class="summary-note">
+                데이터베이스 연동 없이 메모리 저장소를 사용하여 수업 범위 안에서 MVC, Form, Security, Validation, File Upload를 적용했습니다.
+            </p>
         </div>
+    </section>
+
+    <section class="dashboard-section">
+        <article class="dashboard-card">
+            <h2>수업 내용 적용 현황</h2>
+
+            <div class="progress-row">
+                <div>
+                    <strong>Spring MVC</strong>
+                    <span>Controller / Service / Repository</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill width-95"></div>
+                </div>
+            </div>
+
+            <div class="progress-row">
+                <div>
+                    <strong>Thymeleaf</strong>
+                    <span>Fragment / Form Binding / 반복 출력</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill width-90"></div>
+                </div>
+            </div>
+
+            <div class="progress-row">
+                <div>
+                    <strong>Validation & Security</strong>
+                    <span>입력값 검증 / 관리자 접근 제한</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill width-85"></div>
+                </div>
+            </div>
+
+            <div class="progress-row">
+                <div>
+                    <strong>File Upload & Log</strong>
+                    <span>자격증 이미지 / 요청 로그 기록</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill width-80"></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="dashboard-card">
+            <h2>기술 영역 분포</h2>
+
+            <div class="skill-meter-list">
+                <div class="skill-meter">
+                    <span>Backend / Spring</span>
+                    <b>30%</b>
+                </div>
+
+                <div class="skill-meter">
+                    <span>AI / Vision</span>
+                    <b>25%</b>
+                </div>
+
+                <div class="skill-meter">
+                    <span>Cloud / Virtualization</span>
+                    <b>20%</b>
+                </div>
+
+                <div class="skill-meter">
+                    <span>Embedded / IoT</span>
+                    <b>15%</b>
+                </div>
+
+                <div class="skill-meter">
+                    <span>Server / Network</span>
+                    <b>10%</b>
+                </div>
+            </div>
+
+            <p class="summary-note">
+                차트 라이브러리 대신 CSS 기반 시각화로 구성하여 수업 범위를 넘지 않도록 조정했습니다.
+            </p>
+        </article>
     </section>
 
     <section class="feature-grid">
         <article class="feature-card">
-            <h3>Spring MVC</h3>
-            <p>Controller, Model, View 구조로 페이지 요청을 처리합니다.</p>
+            <h3>MVC 구조</h3>
+            <p>요청을 Controller에서 받고, Service와 Repository를 통해 데이터를 처리합니다.</p>
         </article>
 
         <article class="feature-card">
-            <h3>Thymeleaf</h3>
-            <p>서버에서 전달한 데이터를 HTML 화면에 출력합니다.</p>
+            <h3>관리자 기능</h3>
+            <p>프로젝트와 자격증 정보를 등록, 수정, 삭제할 수 있는 관리 화면을 제공합니다.</p>
         </article>
 
         <article class="feature-card">
-            <h3>Validation</h3>
-            <p>프로젝트와 자격증 등록 폼의 입력값을 검증합니다.</p>
+            <h3>자격증 증빙</h3>
+            <p>정적 이미지와 업로드 이미지를 함께 사용하여 자격증 정보를 시각적으로 표시합니다.</p>
         </article>
 
         <article class="feature-card">
-            <h3>Security</h3>
-            <p>관리자 페이지 접근을 로그인 기반으로 제한합니다.</p>
+            <h3>검증과 보안</h3>
+            <p>입력값 유효성 검사와 관리자 로그인 제한을 적용했습니다.</p>
         </article>
     </section>
 </main>
