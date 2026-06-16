@@ -1,4 +1,7 @@
-<header th:fragment="header" class="site-header">
+<header xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        th:fragment="header"
+        class="site-header">
   <div class="header-inner">
     <a class="logo" th:href="@{/}">SongWoo Portfolio</a>
 
@@ -11,12 +14,17 @@
       <a th:href="@{/certificates}">Certificates</a>
       <a th:href="@{/admin}">Admin</a>
 
-      <a th:if="${isLoggedIn == null or !isLoggedIn}"
+      <a sec:authorize="isAnonymous()"
          th:href="@{/login}">
         Login
       </a>
 
-      <form th:if="${isLoggedIn != null and isLoggedIn}"
+      <a sec:authorize="isAuthenticated()"
+         th:href="@{/profile}">
+        My Info
+      </a>
+
+      <form sec:authorize="isAuthenticated()"
             class="nav-logout-form"
             method="post"
             th:action="@{/logout}">
