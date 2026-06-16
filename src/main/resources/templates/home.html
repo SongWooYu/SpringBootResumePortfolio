@@ -15,8 +15,8 @@
             <p class="eyebrow">Spring Boot Portfolio</p>
             <h1>SongWoo의 이력서 및 포트폴리오</h1>
             <p class="hero-description">
-                기존 HTML 기반 개인 홈페이지를 Spring Boot MVC 구조로 재구성한 포트폴리오입니다.
-                프로필, 기술스택, 프로젝트, 자격증 정보를 한 곳에서 조회하고 관리자 화면에서 일부 데이터를 관리할 수 있습니다.
+                개인 이력과 프로젝트 경험을 Spring Boot MVC 구조로 정리한 포트폴리오입니다.
+                프로젝트, 기술스택, 자격증 증빙 자료를 한 곳에서 조회하고 관리자 화면에서 데이터를 관리할 수 있습니다.
             </p>
 
             <div class="hero-actions">
@@ -27,131 +27,169 @@
         </div>
 
         <div class="hero-card portfolio-summary">
-            <h2>Portfolio Summary</h2>
+            <p class="card-label">Overview</p>
+            <h2>Portfolio Index</h2>
 
             <div class="summary-list">
                 <div class="summary-item">
-                    <span>Projects</span>
+                    <span>등록 프로젝트</span>
                     <strong th:text="${projectCount}">0</strong>
                 </div>
 
                 <div class="summary-item">
-                    <span>Certificates</span>
+                    <span>자격 및 증빙</span>
                     <strong th:text="${certificateCount}">0</strong>
                 </div>
 
                 <div class="summary-item">
-                    <span>Skill Areas</span>
+                    <span>기술 영역</span>
                     <strong th:text="${skillCategoryCount}">0</strong>
                 </div>
             </div>
 
             <p class="summary-note">
-                데이터베이스 연동 없이 메모리 저장소를 사용하여 수업 범위 안에서 MVC, Form, Security, Validation, File Upload를 적용했습니다.
+                DB 연동 없이 메모리 저장소를 사용하여 수업 범위 안에서 조회, 등록, 수정, 삭제, 파일 업로드, 검증, 보안 기능을 구성했습니다.
             </p>
         </div>
     </section>
 
     <section class="dashboard-section">
         <article class="dashboard-card">
-            <h2>수업 내용 적용 현황</h2>
-
-            <div class="progress-row">
-                <div>
-                    <strong>Spring MVC</strong>
-                    <span>Controller / Service / Repository</span>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill width-95"></div>
-                </div>
+            <div class="section-heading">
+                <p class="card-label">Project Distribution</p>
+                <h2>프로젝트 분야 분포</h2>
+                <p>
+                    등록된 프로젝트를 웹 개발, AI, 인프라, 임베디드 영역으로 나누어 정리했습니다.
+                </p>
             </div>
 
-            <div class="progress-row">
-                <div>
-                    <strong>Thymeleaf</strong>
-                    <span>Fragment / Form Binding / 반복 출력</span>
+            <div class="chart-list">
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>Web / Spring</strong>
+                        <span>30%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-30"></div>
+                    </div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill width-90"></div>
-                </div>
-            </div>
 
-            <div class="progress-row">
-                <div>
-                    <strong>Validation & Security</strong>
-                    <span>입력값 검증 / 관리자 접근 제한</span>
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>AI / Data</strong>
+                        <span>30%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-30"></div>
+                    </div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill width-85"></div>
-                </div>
-            </div>
 
-            <div class="progress-row">
-                <div>
-                    <strong>File Upload & Log</strong>
-                    <span>자격증 이미지 / 요청 로그 기록</span>
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>Cloud / Network</strong>
+                        <span>20%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-20"></div>
+                    </div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill width-80"></div>
+
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>Embedded / IoT</strong>
+                        <span>20%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-20"></div>
+                    </div>
                 </div>
             </div>
         </article>
 
         <article class="dashboard-card">
-            <h2>기술 영역 분포</h2>
-
-            <div class="skill-meter-list">
-                <div class="skill-meter">
-                    <span>Backend / Spring</span>
-                    <b>30%</b>
-                </div>
-
-                <div class="skill-meter">
-                    <span>AI / Vision</span>
-                    <b>25%</b>
-                </div>
-
-                <div class="skill-meter">
-                    <span>Cloud / Virtualization</span>
-                    <b>20%</b>
-                </div>
-
-                <div class="skill-meter">
-                    <span>Embedded / IoT</span>
-                    <b>15%</b>
-                </div>
-
-                <div class="skill-meter">
-                    <span>Server / Network</span>
-                    <b>10%</b>
-                </div>
+            <div class="section-heading">
+                <p class="card-label">Credentials</p>
+                <h2>자격 및 증빙 현황</h2>
+                <p>
+                    보유 자격증과 학습 증빙 이미지를 포트폴리오 자료로 관리합니다.
+                </p>
             </div>
 
-            <p class="summary-note">
-                차트 라이브러리 대신 CSS 기반 시각화로 구성하여 수업 범위를 넘지 않도록 조정했습니다.
-            </p>
+            <div class="chart-list">
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>국가기술자격</strong>
+                        <span>40%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-40"></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>클라우드 / 네트워크</strong>
+                        <span>25%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-25"></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>AI / 데이터</strong>
+                        <span>20%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-20"></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-meta">
+                        <strong>수료 / 활동 증빙</strong>
+                        <span>15%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill bar-15"></div>
+                    </div>
+                </div>
+            </div>
         </article>
     </section>
 
     <section class="feature-grid">
         <article class="feature-card">
-            <h3>MVC 구조</h3>
-            <p>요청을 Controller에서 받고, Service와 Repository를 통해 데이터를 처리합니다.</p>
+            <p class="card-label">MVC</p>
+            <h3>계층형 구조</h3>
+            <p>
+                Controller, Service, Repository를 분리하여 화면 요청과 데이터 처리 흐름을 구분했습니다.
+            </p>
         </article>
 
         <article class="feature-card">
-            <h3>관리자 기능</h3>
-            <p>프로젝트와 자격증 정보를 등록, 수정, 삭제할 수 있는 관리 화면을 제공합니다.</p>
+            <p class="card-label">Form</p>
+            <h3>관리 기능</h3>
+            <p>
+                관리자 화면에서 프로젝트와 자격증 정보를 등록, 수정, 삭제할 수 있도록 구성했습니다.
+            </p>
         </article>
 
         <article class="feature-card">
-            <h3>자격증 증빙</h3>
-            <p>정적 이미지와 업로드 이미지를 함께 사용하여 자격증 정보를 시각적으로 표시합니다.</p>
+            <p class="card-label">Upload</p>
+            <h3>증빙 이미지</h3>
+            <p>
+                자격증 이미지를 업로드하고 목록 화면에서 증빙 자료로 확인할 수 있습니다.
+            </p>
         </article>
 
         <article class="feature-card">
-            <h3>검증과 보안</h3>
-            <p>입력값 유효성 검사와 관리자 로그인 제한을 적용했습니다.</p>
+            <p class="card-label">Security</p>
+            <h3>접근 제한</h3>
+            <p>
+                관리자 페이지는 Spring Security 로그인 이후 접근할 수 있도록 제한했습니다.
+            </p>
         </article>
     </section>
 </main>
