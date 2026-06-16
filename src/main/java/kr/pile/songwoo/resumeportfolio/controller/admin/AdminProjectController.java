@@ -1,12 +1,14 @@
 package kr.pile.songwoo.resumeportfolio.controller.admin;
 
+import jakarta.validation.Valid;
 import kr.pile.songwoo.resumeportfolio.domain.Project;
 import kr.pile.songwoo.resumeportfolio.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,10 +39,16 @@ public class AdminProjectController {
 
     @PostMapping("/add")
     public String addProject(
-            @ModelAttribute("project") Project project,
+            @Valid @ModelAttribute("project") Project project,
+            BindingResult bindingResult,
             RedirectAttributes redirectAttributes
     ) {
         log.info("Project add requested. projectId={}, title={}", project.getProjectId(), project.getTitle());
+
+        if (bindingResult.hasErrors()) {
+            log.warn("Project add validation failed. errors={}", bindingResult.getErrorCount());
+            return "admin/projects/addForm";
+        }
 
         Project savedProject = projectService.create(project);
 
@@ -65,10 +73,17 @@ public class AdminProjectController {
     @PostMapping("/{projectId}/edit")
     public String editProject(
             @PathVariable String projectId,
-            @ModelAttribute("project") Project project,
+            @Valid @ModelAttribute("project") Project project,
+            BindingResult bindingResult,
             RedirectAttributes redirectAttributes
     ) {
         log.info("Project edit requested. projectId={}, title={}", projectId, project.getTitle());
+
+        if (bindingResult.hasErrors()) {
+            log.warn("Project edit validation failed. projectId={}, errors={}", projectId, bindingResult.getErrorCount());
+            project.setProjectId(projectId);
+            return "admin/projects/editForm";
+        }
 
         projectService.update(projectId, project);
 

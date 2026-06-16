@@ -15,6 +15,7 @@
     <h1>프로젝트 등록</h1>
     <p>
       개인 포트폴리오에 표시할 프로젝트 정보를 등록합니다.
+      필수 항목을 입력하지 않으면 서버에서 유효성 검사를 수행합니다.
     </p>
   </section>
 
@@ -25,48 +26,93 @@
 
     <div class="form-field">
       <label for="projectId">프로젝트 ID</label>
-      <input type="text" id="projectId" th:field="*{projectId}" readonly>
+      <input type="text"
+             id="projectId"
+             th:field="*{projectId}"
+             readonly>
       <p class="field-help">프로젝트 ID는 자동으로 생성됩니다.</p>
     </div>
 
     <div class="form-field">
       <label for="title">프로젝트명</label>
-      <input type="text" id="title" th:field="*{title}" placeholder="예: 개인 이력서 및 포트폴리오 웹사이트">
+      <input type="text"
+             id="title"
+             th:field="*{title}"
+             th:errorclass="input-error"
+             placeholder="예: 개인 이력서 및 포트폴리오 웹사이트">
+      <p class="field-error" th:errors="*{title}">프로젝트명 오류</p>
     </div>
 
     <div class="form-field">
       <label for="category">분류</label>
-      <input type="text" id="category" th:field="*{category}" placeholder="예: Spring Boot">
+      <input type="text"
+             id="category"
+             th:field="*{category}"
+             th:errorclass="input-error"
+             placeholder="예: Spring Boot">
+      <p class="field-error" th:errors="*{category}">분류 오류</p>
     </div>
 
     <div class="form-field">
       <label for="summary">요약</label>
-      <input type="text" id="summary" th:field="*{summary}" placeholder="목록 카드에 표시할 짧은 설명">
+      <input type="text"
+             id="summary"
+             th:field="*{summary}"
+             th:errorclass="input-error"
+             placeholder="목록 카드에 표시할 짧은 설명">
+      <p class="field-error" th:errors="*{summary}">요약 오류</p>
     </div>
 
     <div class="form-field">
       <label for="description">상세 설명</label>
-      <textarea id="description" th:field="*{description}" rows="6" placeholder="프로젝트의 목적, 기능, 구현 내용을 작성"></textarea>
+      <textarea id="description"
+                th:field="*{description}"
+                th:errorclass="input-error"
+                rows="6"
+                placeholder="프로젝트의 목적, 기능, 구현 내용을 작성"></textarea>
+      <p class="field-error" th:errors="*{description}">상세 설명 오류</p>
     </div>
 
     <div class="form-field">
       <label for="techStack">사용 기술</label>
-      <input type="text" id="techStack" th:field="*{techStack}" placeholder="예: Java, Spring Boot, Thymeleaf, CSS">
+      <input type="text"
+             id="techStack"
+             th:field="*{techStack}"
+             th:errorclass="input-error"
+             placeholder="예: Java, Spring Boot, Thymeleaf, CSS">
+      <p class="field-error" th:errors="*{techStack}">사용 기술 오류</p>
     </div>
 
     <div class="form-field">
       <label for="role">담당 역할</label>
-      <input type="text" id="role" th:field="*{role}" placeholder="예: 기획, 설계, 백엔드, 화면 구현">
+      <input type="text"
+             id="role"
+             th:field="*{role}"
+             th:errorclass="input-error"
+             placeholder="예: 기획, 설계, 백엔드, 화면 구현">
+      <p class="field-error" th:errors="*{role}">담당 역할 오류</p>
     </div>
 
     <div class="form-field">
       <label for="githubUrl">GitHub URL</label>
-      <input type="text" id="githubUrl" th:field="*{githubUrl}" placeholder="https://github.com/...">
+      <input type="text"
+             id="githubUrl"
+             th:field="*{githubUrl}"
+             th:errorclass="input-error"
+             placeholder="https://github.com/...">
+      <p class="field-help">입력할 경우 http:// 또는 https://로 시작해야 합니다.</p>
+      <p class="field-error" th:errors="*{githubUrl}">GitHub URL 오류</p>
     </div>
 
     <div class="form-field">
       <label for="demoUrl">Demo URL</label>
-      <input type="text" id="demoUrl" th:field="*{demoUrl}" placeholder="배포 주소가 있으면 입력">
+      <input type="text"
+             id="demoUrl"
+             th:field="*{demoUrl}"
+             th:errorclass="input-error"
+             placeholder="배포 주소가 있으면 입력">
+      <p class="field-help">입력할 경우 http:// 또는 https://로 시작해야 합니다.</p>
+      <p class="field-error" th:errors="*{demoUrl}">Demo URL 오류</p>
     </div>
 
     <div class="form-actions">

@@ -15,6 +15,7 @@
     <h1>자격증 등록</h1>
     <p>
       자격증, 수료증, 활동 증빙 이미지를 첨부하여 포트폴리오에 표시합니다.
+      자격증 정보는 필수이며 이미지는 선택 입력입니다.
     </p>
   </section>
 
@@ -26,35 +27,62 @@
 
     <div class="form-field">
       <label for="certificateId">자격증 ID</label>
-      <input type="text" id="certificateId" th:field="*{certificateId}" readonly>
+      <input type="text"
+             id="certificateId"
+             th:field="*{certificateId}"
+             readonly>
       <p class="field-help">자격증 ID는 자동으로 생성됩니다.</p>
     </div>
 
     <div class="form-field">
       <label for="name">자격증명</label>
-      <input type="text" id="name" th:field="*{name}" placeholder="예: 정보처리산업기사">
+      <input type="text"
+             id="name"
+             th:field="*{name}"
+             th:errorclass="input-error"
+             placeholder="예: 정보처리산업기사">
+      <p class="field-error" th:errors="*{name}">자격증명 오류</p>
     </div>
 
     <div class="form-field">
       <label for="issuer">발급기관</label>
-      <input type="text" id="issuer" th:field="*{issuer}" placeholder="예: 한국산업인력공단">
+      <input type="text"
+             id="issuer"
+             th:field="*{issuer}"
+             th:errorclass="input-error"
+             placeholder="예: 한국산업인력공단">
+      <p class="field-error" th:errors="*{issuer}">발급기관 오류</p>
     </div>
 
     <div class="form-field">
       <label for="acquiredDate">취득일</label>
-      <input type="text" id="acquiredDate" th:field="*{acquiredDate}" placeholder="예: 2026-06-12">
+      <input type="text"
+             id="acquiredDate"
+             th:field="*{acquiredDate}"
+             th:errorclass="input-error"
+             placeholder="예: 2026-06-12">
+      <p class="field-help">예시 형식: 2026-06-12</p>
+      <p class="field-error" th:errors="*{acquiredDate}">취득일 오류</p>
     </div>
 
     <div class="form-field">
       <label for="description">설명</label>
-      <textarea id="description" th:field="*{description}" rows="5" placeholder="자격증 또는 수료 내역 설명"></textarea>
+      <textarea id="description"
+                th:field="*{description}"
+                th:errorclass="input-error"
+                rows="5"
+                placeholder="자격증 또는 수료 내역 설명"></textarea>
+      <p class="field-error" th:errors="*{description}">설명 오류</p>
     </div>
 
     <div class="form-field">
       <label for="imageFile">증빙 이미지</label>
-      <input type="file" id="imageFile" name="imageFile" accept="image/*">
+      <input type="file"
+             id="imageFile"
+             name="imageFile"
+             accept="image/*">
       <p class="field-help">
-        새로 업로드한 이미지는 uploads/certificates 폴더에 저장됩니다.
+        이미지는 선택 입력입니다. 새로 업로드한 이미지는 uploads/certificates 폴더에 저장됩니다.
       </p>
     </div>
 

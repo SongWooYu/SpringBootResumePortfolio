@@ -15,6 +15,7 @@
         <h1>프로젝트 수정</h1>
         <p>
             등록된 프로젝트 정보를 수정합니다.
+            수정 시에도 프로젝트 등록과 동일한 유효성 검사를 수행합니다.
         </p>
     </section>
 
@@ -25,57 +26,100 @@
 
         <div class="form-field">
             <label for="projectId">프로젝트 ID</label>
-            <input type="text" id="projectId" th:field="*{projectId}" readonly>
+            <input type="text"
+                   id="projectId"
+                   th:field="*{projectId}"
+                   readonly>
             <p class="field-help">프로젝트 ID는 수정할 수 없습니다.</p>
         </div>
 
         <div class="form-field">
             <label for="title">프로젝트명</label>
-            <input type="text" id="title" th:field="*{title}">
+            <input type="text"
+                   id="title"
+                   th:field="*{title}"
+                   th:errorclass="input-error">
+            <p class="field-error" th:errors="*{title}">프로젝트명 오류</p>
         </div>
 
         <div class="form-field">
             <label for="category">분류</label>
-            <input type="text" id="category" th:field="*{category}">
+            <input type="text"
+                   id="category"
+                   th:field="*{category}"
+                   th:errorclass="input-error">
+            <p class="field-error" th:errors="*{category}">분류 오류</p>
         </div>
 
         <div class="form-field">
             <label for="summary">요약</label>
-            <input type="text" id="summary" th:field="*{summary}">
+            <input type="text"
+                   id="summary"
+                   th:field="*{summary}"
+                   th:errorclass="input-error">
+            <p class="field-error" th:errors="*{summary}">요약 오류</p>
         </div>
 
         <div class="form-field">
             <label for="description">상세 설명</label>
-            <textarea id="description" th:field="*{description}" rows="6"></textarea>
+            <textarea id="description"
+                      th:field="*{description}"
+                      th:errorclass="input-error"
+                      rows="6"></textarea>
+            <p class="field-error" th:errors="*{description}">상세 설명 오류</p>
         </div>
 
         <div class="form-field">
             <label for="techStack">사용 기술</label>
-            <input type="text" id="techStack" th:field="*{techStack}">
+            <input type="text"
+                   id="techStack"
+                   th:field="*{techStack}"
+                   th:errorclass="input-error">
+            <p class="field-error" th:errors="*{techStack}">사용 기술 오류</p>
         </div>
 
         <div class="form-field">
             <label for="role">담당 역할</label>
-            <input type="text" id="role" th:field="*{role}">
+            <input type="text"
+                   id="role"
+                   th:field="*{role}"
+                   th:errorclass="input-error">
+            <p class="field-error" th:errors="*{role}">담당 역할 오류</p>
         </div>
 
         <div class="form-field">
             <label for="githubUrl">GitHub URL</label>
-            <input type="text" id="githubUrl" th:field="*{githubUrl}">
+            <input type="text"
+                   id="githubUrl"
+                   th:field="*{githubUrl}"
+                   th:errorclass="input-error"
+                   placeholder="https://github.com/...">
+            <p class="field-help">입력할 경우 http:// 또는 https://로 시작해야 합니다.</p>
+            <p class="field-error" th:errors="*{githubUrl}">GitHub URL 오류</p>
         </div>
 
         <div class="form-field">
             <label for="demoUrl">Demo URL</label>
-            <input type="text" id="demoUrl" th:field="*{demoUrl}">
+            <input type="text"
+                   id="demoUrl"
+                   th:field="*{demoUrl}"
+                   th:errorclass="input-error"
+                   placeholder="https://...">
+            <p class="field-help">입력할 경우 http:// 또는 https://로 시작해야 합니다.</p>
+            <p class="field-error" th:errors="*{demoUrl}">Demo URL 오류</p>
         </div>
 
         <div class="form-actions">
             <button type="submit" class="btn primary">수정 완료</button>
+
             <a class="btn secondary"
                th:href="@{/projects/{projectId}(projectId=${project.projectId})}">
                 상세 페이지
             </a>
-            <a class="btn secondary" th:href="@{/projects}">목록으로</a>
+
+            <a class="btn secondary" th:href="@{/projects}">
+                목록으로
+            </a>
         </div>
     </form>
 </main>

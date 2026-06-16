@@ -1,10 +1,12 @@
 package kr.pile.songwoo.resumeportfolio.controller.admin;
 
+import jakarta.validation.Valid;
 import kr.pile.songwoo.resumeportfolio.domain.Certificate;
 import kr.pile.songwoo.resumeportfolio.service.CertificateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,11 +39,17 @@ public class AdminCertificateController {
 
     @PostMapping("/add")
     public String addCertificate(
-            @ModelAttribute("certificate") Certificate certificate,
+            @Valid @ModelAttribute("certificate") Certificate certificate,
+            BindingResult bindingResult,
             @RequestParam("imageFile") MultipartFile imageFile,
             RedirectAttributes redirectAttributes
     ) {
         log.info("Certificate add requested. certificateId={}, name={}", certificate.getCertificateId(), certificate.getName());
+
+        if (bindingResult.hasErrors()) {
+            log.warn("Certificate add validation failed. errors={}", bindingResult.getErrorCount());
+            return "admin/certificates/addForm";
+        }
 
         certificateService.create(certificate, imageFile);
 
